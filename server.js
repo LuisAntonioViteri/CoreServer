@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.json({ message: "App Express.js active" });
 });
 //sync db with models, if a table is changed a new table with modifications is created
-db.sequelize.sync({force:false}).then(()=>{
+db.sequelize.sync({force:true}).then(()=>{
   console.log('Drop and Resync Db');
   initial();
 });
