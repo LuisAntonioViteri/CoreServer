@@ -6,7 +6,7 @@ const app = express();
 
 const Role = db.role;
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: process.env.CORSPORT
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
@@ -18,10 +18,10 @@ app.get("/", (req, res) => {
   res.json({ message: "App Express.js active" });
 });
 //sync db with models, if a table is changed a new table with modifications is created
-/*db.sequelize.sync({force:false}).then(()=>{
+db.sequelize.sync({force:false}).then(()=>{
   console.log('Drop and Resync Db');
   initial();
-});*/
+});
 function initial() {
   Role.create({
     id: 1,
